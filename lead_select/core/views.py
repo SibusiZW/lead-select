@@ -4,6 +4,9 @@ from django.http import HttpResponse
 from .forms import LoginForm
 
 def login_view(request):
+    if request.user.is_authenticated:
+        return redirect('home')
+
     if request.method == 'POST':
         form = LoginForm(request.POST)
 
