@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
 from .forms import LoginForm
@@ -18,7 +19,7 @@ def login_view(request):
 
             if user is not None:
                 login(request, user)
-                return HttpResponse('Logged In!')
+                return redirect('home')
             else:
                 return HttpResponse('Incorrect username/password')
     else:
@@ -26,5 +27,12 @@ def login_view(request):
 
     return render(request, 'login.html', { 'form': form })
 
+@login_required(login_url='/login/')
 def election_list(request):
     return render(request, 'election_list.html')
+
+@login_required(login_url='/login/')
+def signout(request):
+    logout(request)
+
+    return redirect('login')
