@@ -1,0 +1,38 @@
+* {
+    font-family: 'Space Mono', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #ddd;
+}
+
+nav {
+    background-color: #8ed129;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #ddd;
+}
+
+.logout {
+    background: #cd0707;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+nav img {
+    width: 120px;
+    border-radius: 10px;
+}

@@ -22,3 +22,6 @@ def login_view(request):
         form = LoginForm()
 
     return render(request, 'login.html', { 'form': form })
+
+def election_list(request):
+    return render(request, 'election_list.html')
