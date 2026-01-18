@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, logout
+from django.http import HttpResponse
 from .forms import LoginForm
 
 def login_view(request):
@@ -9,7 +11,13 @@ def login_view(request):
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
 
-            print(username, password)
+            user = authenticate(request, username=username, password=password)
+
+            if user is not None:
+                login(request, user)
+                return HttpResponse('Logged In!')
+            else:
+                return HttpResponse('Incorrect username/password')
     else:
         form = LoginForm()
 
