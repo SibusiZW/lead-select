@@ -22,6 +22,7 @@ class Vote(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     candidate = models.ForeignKey(Candidate, on_delete=models.CASCADE, related_name='votes')
     election = models.ForeignKey(Election, on_delete=models.CASCADE, related_name='votes')
+    timestamp = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         unique_together = ('user', 'election')
