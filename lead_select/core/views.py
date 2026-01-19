@@ -50,13 +50,20 @@ def signout(request):
 
 @login_required(login_url='/login/')
 def vote(request, pk):
-    candidate = Candidate.objects.get(id=pk)
+    candidate = get_object_or_404(Candidate, pk=pk)
 
     obj = Vote(user=request.user, candidate=candidate, election=candidate.election)
     obj.save()
     return redirect('home')
 
+@login_required(login_url='/login/')
 def stats_view(request):
     elections = Election.objects.order_by('-date_created').annotate(total_votes=Count('votes'))
 
     return render(request, 'stats.html', { 'elections': elections })
+
+def results(request, pk):
+    election = get_object_or_404(Election, pk=pk)
+    candidates = Candidate.objects.filter(election=election).annotate(total_votes=Count('votes'))
+
+    return render(request, 'results_page.html', { 'candidates': candidates })

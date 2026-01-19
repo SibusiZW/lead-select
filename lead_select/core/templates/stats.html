@@ -7,7 +7,7 @@
                 <h2>{{ election.title }}</h2>
                 <h1>{{ election.total_votes }}</h1>
                 <p>Student(s) voted</p>
-                <a href="">View Results for Each candidate</a>
+                <a href="{% url 'results' election.pk %}">View Results for Each candidate</a>
             </div>
         {% endif %}
     {% endfor %}

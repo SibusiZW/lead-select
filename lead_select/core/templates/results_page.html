@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% for candidate in candidates %}
+        <div class="stats-card">
+            <h2>{{ candidate.name }}</h2>
+            <p>Has</p>
+            <h1>{{ candidate.total_votes }} vote(s)</h1>
+        </div>
+    {% endfor %}
+{% endblock %}
