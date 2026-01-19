@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
@@ -33,6 +33,13 @@ def election_list(request):
     elections = Election.objects.order_by('-date_created')
 
     return render(request, 'election_list.html', {'user': request.user, 'elections': elections})
+
+@login_required(login_url='/login/')
+def election_detail(request, pk):
+    election = get_object_or_404(Election, pk=pk)
+    candidates = Candidate.objects.filter(election=election)
+
+    return render(request, 'election_detail.html', { 'election': election, 'candidates': candidates })
 
 @login_required(login_url='/login/')
 def signout(request):

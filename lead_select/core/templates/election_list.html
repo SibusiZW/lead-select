@@ -8,7 +8,7 @@
             <div class="election-card">
                 <h2>{{ election.title }}</h2>
                 <p>Uploaded on {{ election.date_created }}</p>
-                <a href="">View Candidates</a>
+                <a href="{% url 'election' election.pk %}">View Candidates</a>
             </div>
         {% endif %}
     {% endfor %}
