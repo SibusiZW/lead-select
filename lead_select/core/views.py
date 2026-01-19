@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
+from django.db.models import Count
 from .models import Election, Candidate, Vote
 from .forms import LoginForm
 
@@ -54,3 +55,8 @@ def vote(request, pk):
     obj = Vote(user=request.user, candidate=candidate, election=candidate.election)
     obj.save()
     return redirect('home')
+
+def stats_view(request):
+    elections = Election.objects.order_by('-date_created').annotate(total_votes=Count('votes'))
+
+    return render(request, 'stats.html', { 'elections': elections })

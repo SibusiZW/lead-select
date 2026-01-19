@@ -2,6 +2,6 @@
 <nav>
     <img src="{% static 'img/leadselect-logo.png' %}" alt="LeadSelect Logo">
     <span><a href="{% url 'home' %}">Home</a></span>
-    <span><a href="">Stats</a></span>
+    <span><a href="{% url 'stats' %}">Stats</a></span>
     <span class="logout"><a href="{% url 'signout' %}">Log Out</a></span>
 </nav>
