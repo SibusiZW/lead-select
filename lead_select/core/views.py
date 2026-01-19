@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
 from django.db.models import Count
+from django.db import IntegrityError
 from .models import Election, Candidate, Vote
 from .forms import LoginForm
 
@@ -50,10 +51,13 @@ def signout(request):
 
 @login_required(login_url='/login/')
 def vote(request, pk):
-    candidate = get_object_or_404(Candidate, pk=pk)
+    try:
+        candidate = get_object_or_404(Candidate, pk=pk)
 
-    obj = Vote(user=request.user, candidate=candidate, election=candidate.election)
-    obj.save()
+        obj = Vote(user=request.user, candidate=candidate, election=candidate.election)
+        obj.save()
+    except IntegrityError:
+        return HttpResponse("You've already voted")
     return redirect('home')
 
 @login_required(login_url='/login/')
