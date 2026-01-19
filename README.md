@@ -27,7 +27,7 @@ Lead Select is a Django-based web application.
 1.  **Clone the repository**
 
     ``` bash
-    git clone <your-repo-url>
+    git clone https://github.com/SibusiZW/lead-select.git
     cd lead_select
     ```
 
