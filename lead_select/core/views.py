@@ -46,3 +46,11 @@ def signout(request):
     logout(request)
 
     return redirect('login')
+
+@login_required(login_url='/login/')
+def vote(request, pk):
+    candidate = Candidate.objects.get(id=pk)
+
+    obj = Vote(user=request.user, candidate=candidate, election=candidate.election)
+    obj.save()
+    return redirect('home')

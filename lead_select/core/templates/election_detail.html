@@ -6,7 +6,7 @@
     {% for candidate in candidates %}
         <div class="stats-card">
             <h2>{{ candidate.name }}</h2>
-            <a href="">Vote Now</a>
+            <a href="{% url 'vote' candidate.pk %}">Vote Now</a>
         </div>
     {% endfor %}
 {% endblock %}
