@@ -30,7 +30,7 @@ def login_view(request):
 
 @login_required(login_url='/login/')
 def election_list(request):
-    return render(request, 'election_list.html')
+    return render(request, 'election_list.html', {'user': request.user})
 
 @login_required(login_url='/login/')
 def signout(request):
