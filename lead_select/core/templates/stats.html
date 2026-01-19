@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% for election in elections %}
+        {% if election.is_active %}
+            <div class="stats-card">
+                <h2>{{ election.title }}</h2>
+                <h1>{{ election.total_votes }}</h1>
+                <p>Student(s) voted</p>
+                <a href="">View Results for Each candidate</a>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
