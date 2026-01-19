@@ -2,4 +2,12 @@
 
 {% block content %}
     <h1>Hi, {{ user }}!</h1>
+
+    {% for election in elections %}
+        {% if election.is_active %}
+            <div class="election-card">
+                h
+            </div>
+        {% endif %}
+    {% endfor %}
 {% endblock %}
