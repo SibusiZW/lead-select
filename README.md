@@ -1,6 +1,6 @@
 # Lead Select
 
-Lead Select is a Django-based web application.
+Lead Select is a Django-based web application used for voting for student related posts (prefcts, dorm monitors, church wardens, e.t.c)
 
 ## Project Structure
 
