@@ -38,6 +38,15 @@ INSTALLED_APPS = [
     'core',
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.onrender.com',
+]
+
+CSRF_COOKIE_SECURE = True      # Only send CSRF cookie over . Set to False in development
+SESSION_COOKIE_SECURE = True   # Only send session cookie over HTTPS . Set to False in development
+
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
