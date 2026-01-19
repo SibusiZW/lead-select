@@ -6,7 +6,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #ddd;
+    background-color: #fff9f9;
 }
 
 nav {
@@ -39,4 +39,21 @@ nav img {
 
 .election-card {
     background-color: #fff;
+    padding: 20px;
+    margin: 30px 20px;
+    border-radius: 10px;
+    border: 1px solid #8ed129;
+    transition: transform 0.3s;
+}
+
+.election-card:hover {
+    transform: translateY(-10px);
+}
+
+.election-card a {
+    text-decoration: none;
+    color: #fff;
+    background-color: #58811c;
+    padding: 10px;
+    border-radius: 10px;
 }

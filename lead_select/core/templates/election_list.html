@@ -6,7 +6,9 @@
     {% for election in elections %}
         {% if election.is_active %}
             <div class="election-card">
-                h
+                <h2>{{ election.title }}</h2>
+                <p>Uploaded on {{ election.date_created }}</p>
+                <a href="">View Candidates</a>
             </div>
         {% endif %}
     {% endfor %}
