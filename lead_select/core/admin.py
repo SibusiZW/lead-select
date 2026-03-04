@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Election, Candidate, Vote
+from .models import Election, Candidate
 
 @admin.register(Election)
 class ElectionAdmin(admin.ModelAdmin):
