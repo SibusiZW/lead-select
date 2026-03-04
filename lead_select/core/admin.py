@@ -11,7 +11,3 @@ class CandidateAdmin(admin.ModelAdmin):
     list_display = ('name', 'election')
     search_fields = ('name', 'election')
 
-@admin.register(Vote)
-class VoteAdmin(admin.ModelAdmin):
-    list_display = ('candidate', 'election', 'timestamp')
-    search_fields = ('candidate', 'election')
